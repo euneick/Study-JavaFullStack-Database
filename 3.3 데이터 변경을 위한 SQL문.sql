@@ -235,7 +235,7 @@ select * from market_db.big_table3;
 /*
 	테이블은 남기고 조건에 따라 삭제 하고 싶을 때 			delete from 테이블이름
     테이블은 남기고 모든 행을 삭제 하고 싶을 때				truncate table 테이블이름
-    테이블 자체를 삭제하여 모든 데이터를 삭제 하고 싶을 때 	drop table 테이블이름
+    테이블 자체를 삭제하여 모든 데이터를 삭제 하고 싶을 때 		drop table 테이블이름
 */
 
 
