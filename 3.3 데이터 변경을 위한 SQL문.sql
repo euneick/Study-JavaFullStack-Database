@@ -64,8 +64,8 @@ insert into hongong2 values (null, '재남', 35);
 -- =================================================================================================
 
 /*
-	toy_id, toy_name, age열을 갖는 hongong3 테이블을 만드는데
-	toy_id 는 int, toy_name은 char(4), age는 int 형식을 갖고
+	toy_id, toy_name, age열을 갖는 hongong3 테이블 생성
+	toy_id 는 int, toy_name은 char(4), age는 int 형식
 	toy_id는 1000부터 3씩 자동으로 증가하게끔 설정
 */
 create table hongong3(
