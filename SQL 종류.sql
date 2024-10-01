@@ -1,7 +1,5 @@
 /*
-	MYSQL DMBS를 관리하기 위한 언어는 SQL입니다.
-
-		SQL종류
+	SQL종류
         1. DDL(Data Deinition Language) - 데이터 구조를 정의하고 관리 하는 작업을 처리하는 SQL문들
            종류
 				CREATE 문 : 데이터베이스 생성, 테이블생성, 인덱스생성, 뷰 생성 등의  개체를 생성할때 사용되는 구문
@@ -11,10 +9,10 @@
         
         2. DML(Data Manipulation Language) - 데이터를 조작하고 관리하는 작업을 처리하는 SQL문
 			 종류
-				SELECT 문 : 테이블에 저장된 열의 값을 조회 합니다. 
-                INSERT 문 : 새로운 행(데이터)를 테이블에 삽입 합니다. 
-                UPDATE 문 : 기존 테이블에 저장된 열의 데이터를 수정합니다.
-                DELETE 문 : 기존 테이블에 저장된 행(데이터)를 삭제 합니다. 
+                INSERT 문 : 새로운 행(데이터)를 테이블에 삽입하는 구문
+                UPDATE 문 : 기존 테이블에 저장된 열의 데이터를 수정하는 구문
+                DELETE 문 : 기존 테이블에 저장된 행(데이터)를 삭제하는 구문
+                MERGE 문 : insert와 update를 한번에 하는 구문
 				
 	    3. DCL(Data Control Language) - 데이터 접근 및 보안 범위를 제어하는 작업을 처리하는 SQL문들
 			종류
@@ -38,4 +36,7 @@
                 rollback : 트랜잭션 변경 사항을 이전 상태로 되돌리는 SQL문 
 				savepoint : 트랜잭션 중간 상태를 영구 반영하는 SQL문 
 		
+        5. DQL(Data Query Language)
+			종류
+				SELECT 문 : 테이블에 저장된 열의 값을 조회 합니다. 
 */
