@@ -44,12 +44,14 @@ create table hongong2(
     age 		int
 );
 
+select * from hongong2;
+
 -- hongong2 테이블에 자동 증가하는 열의 데이터를 null값으로 채워 놓고 데이터 추가
 insert into hongong2 values (null, '보핍', 25);
 insert into hongong2 values (null, '슬링키', 22);
 insert into hongong2 values (null, '렉스', 21);
 
--- toy_id값은 자동으로 증가하기 때문에 toy_id열을 생갹하고 데이터 추가
+-- toy_id값은 자동으로 증가하기 때문에 toy_id열을 생략하고 데이터 추가
 insert into hongong2 (toy_name, age)
 values ('맹구', 100);
 
