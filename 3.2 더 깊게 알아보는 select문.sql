@@ -80,12 +80,10 @@ select distinct addr from member order by addr asc;
 			- min()				열에 저장된 데이터들 중 최솟값을 반환
 			- max()				열에 저장된 데이터들 중 최댓값을 반환
 			- count()			열에 저장된 데이터들의 갯수를 반환
-			- count(distinct)	열에 저장된 데이터들 중 중복된 값을 제외한 나머지 값을 반환
+			- count(distinct)	열에 저장된 데이터들 중 중복된 값을 제외한 나머지 값을 반환. 중복은 1개만 인정
 		
 		문법
 			select 집계함수 from 테이블이름 group by 그룹으로묶을열이름
-			
-	SQL에서 함수의 인자는 변수가 아닌 열이름으로 작성 하는 듯?
 */
 
 -- buy 테이블의 모든 데이터들을 조회
