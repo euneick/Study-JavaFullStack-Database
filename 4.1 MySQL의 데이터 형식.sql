@@ -33,7 +33,7 @@ create table movie(
     movie_director 	varchar(20),
     movie_star 		varchar(20),
     movie_script 	longtext, 	-- 4 Byte 긴 문자열 최대 4GB
-    movie_film 		longblob 	-- 4 Byte 긴 바이너리 데이터 최대 4GB, 사진 또는 동영상 같은 데이티 저장
+    movie_film 		longblob 	-- 4 Byte 긴 바이너리 데이터 최대 4GB, 사진 또는 동영상 같은 데이터 저장
 );
 
 -- ===================================================================================
