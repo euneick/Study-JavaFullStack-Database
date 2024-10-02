@@ -163,7 +163,7 @@ from A left outer join B
 on A.id = B.id;
 
 select
-	A.id, A.name, B.order_item
+	B.id, A.name, B.order_item
 from A right outer join B
 on A.id = B.id;
 
