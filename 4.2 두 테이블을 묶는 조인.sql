@@ -30,6 +30,7 @@
         - full outer join
 			- 양 쪽 모든 테이블의 데이터를 조회
             - 현업에선 잘 쓰이지 않음
+			- MySQL에선 지원하지 않음. union 키워드를 통해 구현 할 수 있음.
     
     3. 상호 조인 (cross join)
 		- 한쪽 테이블의 모든 행과 다른쪽 테이블의 모든 행을 모두 조인
@@ -128,6 +129,43 @@ from member left outer join buy
 	on member.mem_id = buy.mem_id
 where buy.prod_name is null
 order by member.mem_id asc;
+
+-- =================================================================================
+
+/*
+	left outer join, right outer join 예제
+*/
+-- 회원 정보 테이블
+create table A (
+	id 		int primary key,
+    name	varchar(50)
+);
+
+-- 주문 정보 테이블
+create table B (
+	id 				int primary key,
+    order_item		varchar(50)
+);
+
+insert into A (id, name)
+values (1, 'Alpha'), (2, 'Bravo'), (3, 'Charlie');
+
+select * from A;
+
+insert into B (id, order_item)
+values (2, 'Laptop'), (3, 'Smartphone'), (4, 'Tablet');
+
+select * from B;
+
+select
+	A.id, A.name, B.order_item
+from A left outer join B
+on A.id = B.id;
+
+select
+	A.id, A.name, B.order_item
+from A right outer join B
+on A.id = B.id;
 
 -- =================================================================================
 
