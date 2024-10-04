@@ -43,6 +43,52 @@
             check				특정 조건을 만족해야 하게끔 설정
 */
 
+drop database if exists internet_market;
+create database internet_market;
+
+use internet_market;
+
+drop table if exists customers;
+create table customers(
+	customer_id 	int auto_increment primary key,
+    customer_name 	varchar(100) not null,
+    email			varchar(100) unique not null,
+    phone 			varchar(20),
+    address 		varchar(255),
+    regist_date		timestamp default current_timestamp
+);
+
+drop table if exists products;
+create table products(
+	product_id		int auto_increment primary key,
+    product_name	varchar(100) not null,
+    description 	text,
+    price 			decimal(10, 2) not null, 		-- 최대 10자리 숫자 중 소수점 2자리 까지 저장
+    stock 			int not null,
+    regist_date 	timestamp default current_timestamp
+);
+
+drop table if exists orders;
+create table orders(
+	order_id 		int auto_increment primary key,
+    customer_id		int not null,
+    order_date 		timestamp default current_timestamp,
+    status 			enum('pending', 'shipped', 'delivered', 'cancelled') default 'pending',
+    
+    foreign key(customer_id) references customers(customer_id)
+);
+
+drop table if exists order_items;
+create table order_items(
+	order_item_id	int auto_increment primary key,
+    order_id 		int not null,
+    product_id 		int not null,
+    quantity 		int not null,
+    price 			decimal(10, 2) not null,
+    
+    foreign key(order_id) references orders(order_id),
+    foreign key(product_id) references products(product_id)
+);
 
 
 
