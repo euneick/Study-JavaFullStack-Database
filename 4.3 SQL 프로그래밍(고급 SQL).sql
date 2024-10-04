@@ -291,7 +291,47 @@ delimiter ;
 
 call whileProc2();
 
+-- ====================================================================================
 
+/*
+	동적 SQL
+		쿼리를 바로 실행하지 않고, 미리 준비해뒀다가 필요할 때 실행하는 문법
+        
+        prepare			쿼리문 미리 준비
+        execute			준비된 쿼리문 실행
+        deallocate prepare		준비된 쿼리문 삭제
+*/
+
+use market_db;
+
+prepare myQuery from '
+	select *
+	from member
+	where mem_id = "BLK"
+';
+execute myQuery;
+deallocate prepare myQuery;
+
+/*
+	동적 SQL 활용
+		향후 입력될 값을 ? 키워드로 비워두고 execute 구문에서 using 키워드로 ? 키워드에 값을 전달
+*/
+drop table if exists gate_table;
+create table gate_table (
+	id 				int auto_increment primary key,
+    entry_time		datetime
+);
+
+set @curDate = current_timestamp();
+
+prepare myQuery from '
+	insert into gate_table
+	values(NULL, ?)
+';
+execute myQuery using @curDate;
+deallocate prepare myQuery;
+
+select * from gate_table;
 
 
 
