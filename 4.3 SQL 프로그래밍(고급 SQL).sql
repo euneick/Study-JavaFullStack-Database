@@ -170,6 +170,63 @@ delimiter ;
 
 call caseProc();
 
+-- ====================================================================================
+
+/*
+	case 문의 활용
+		회원들의 총 구매액을 계산해서 회원의 등급을 4단계로 나누는 예제
+*/
+
+-- 순서 1. 그룹 아이디 별 총 구매액 조회
+select
+	mem_id,
+    sum(price * amount) as total_price
+from buy
+group by mem_id;
+
+-- 순서2. 1의 순서를 내림차순으로 정렬
+select
+	mem_id,
+    sum(price * amount) as total_price
+from buy
+group by mem_id
+order by total_price desc;
+
+-- 순서 3. 2의 과정에서 그룹 아이디의 이름을 같이 조회
+select
+	B.mem_id,
+    M.mem_name,
+    sum(B.price * B.amount) as total_price
+from buy B join member M
+	on B.mem_id = M.mem_id
+group by B.mem_id
+order by total_price desc;
+
+-- 순서 4. 3에서 구매 이력이 없는 그룹도 함께 조회
+select
+	M.mem_id,
+    M.mem_name,
+    sum(B.price * B.amount) as total_price
+from buy B right outer join member M
+	on B.mem_id = M.mem_id
+group by M.mem_id
+order by total_price desc;
+
+-- 순서 5. case 문을 활용하여 등급 분류
+select
+	M.mem_id,
+    M.mem_name,
+    sum(B.price * B.amount) as total_price,
+    case
+		when (sum(B.price * B.amount) >= 1500) then '최우수고객'
+		when (sum(B.price * B.amount) >= 1000) then '우수고객'
+		when (sum(B.price * B.amount) >= 1) then '일반고객'
+        else '유령고객'
+    end member_grade
+from buy B right outer join member M
+	on B.mem_id = M.mem_id
+group by M.mem_id
+order by total_price desc;
 
 
 
