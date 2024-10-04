@@ -228,7 +228,34 @@ from buy B right outer join member M
 group by M.mem_id
 order by total_price desc;
 
+-- ====================================================================================
 
+/*
+	while문
+		문법
+			while (조건식) do
+				[SQL 문장들]
+			end while;
+*/
+drop procedure if exists whileProc;
+delimiter $$
+create procedure whileProc()
+begin
+	declare i int;
+    declare sum int;
+    set i = 1;
+    set sum = 0;
+    
+    while (i <= 100) do
+		set sum = sum + i;
+        set i = i + 1;
+	end while;
+    
+    select '1부터 100까지의 합 : ', sum;
+end $$
+delimiter ;
+
+call whileProc();
 
 
 
