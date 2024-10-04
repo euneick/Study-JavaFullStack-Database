@@ -58,6 +58,15 @@ create table customers(
     regist_date		timestamp default current_timestamp
 );
 
+insert into customers(customer_name, email, phone, address)
+values ('Alpha', 'Alpha@example.com', '010-1111-2222', '서울시 강남구'),
+	('Bravo', 'Bravo@example.com', '010-2222-3333', '서울시 송파구'),
+	('Charile', 'Charile@example.com', '010-3333-4444', '부산시 해운대구'),
+	('Delta', 'Delta@example.com', '010-4444-5555', '대구시 중구'),
+	('Echo', 'Echo@example.com', '010-5555-6666', '인천시 남구');
+
+select * from customers;
+
 drop table if exists products;
 create table products(
 	product_id		int auto_increment primary key,
@@ -68,6 +77,15 @@ create table products(
     regist_date 	timestamp default current_timestamp
 );
 
+insert into products(product_name, description, price, stock)
+values ('스마트폰', '최신형 스마트폰, 128GB', 799000.00, 50),
+	('노트북', '고성능 게이밍 노트북, 16GB RAM', 1999000.00, 30),
+	('무선 이어폰', '액티브 노이즈 캔슬링 기능', 150000.00, 100),
+	('스마트워치', '건강 모니터링 기능이 탑재된 스마트 워치', 299000.00, 70),
+	('태블릿', '10인치 태블릿, 64GB', 450000.00, 50);
+    
+select * from products;
+
 drop table if exists orders;
 create table orders(
 	order_id 		int auto_increment primary key,
@@ -77,6 +95,15 @@ create table orders(
     
     foreign key(customer_id) references customers(customer_id)
 );
+
+insert into orders(customer_id, order_date, status)
+values (1, '2024-10-01 10:30:42', 'shipped'),
+	(2, '2024-04-05 19:10:42', 'pending'),
+    (3, '2024-01-19 01:52:42', 'delivered'),
+    (1, '2024-02-11 00:23:42', 'delivered'),
+    (2, '2024-06-25 14:00:00', 'cancelled');
+
+select * from orders;
 
 drop table if exists order_items;
 create table order_items(
@@ -89,6 +116,16 @@ create table order_items(
     foreign key(order_id) references orders(order_id),
     foreign key(product_id) references products(product_id)
 );
+
+insert into order_items(order_id, product_id, quantity, price)
+values (1, 1, 1, 799000.00),
+	(1, 3, 2, 150000.00),
+	(2, 2, 1, 1999000.00),
+	(3, 4, 1, 299000.00),
+	(4, 5, 1, 450000.00),
+	(5, 2, 2, 1999000.00);
+    
+select * from order_items;
 
 
 
