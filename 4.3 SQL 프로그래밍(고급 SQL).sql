@@ -257,7 +257,40 @@ delimiter ;
 
 call whileProc();
 
+/*
+	iterate [레이블] - 지정한 레이블로 가서 계속 진행
+    leave [레이블] - 지정한 레이블 종료
+*/
+drop procedure if exists whileProc2;
+delimiter $$
+create procedure whileProc2()
+begin
+	declare i int;
+    declare sum int;
+    set i = 1;
+    set sum = 0;
+    
+    myWhile : 			-- myWhile 이름의 레이블 지정
+		while (i <= 100) do
+			if (i % 4 = 0) then
+				set i = i + 1;
+                iterate myWhile;
+            end if;
+            
+			set sum = sum + i;
+            
+            if (sum > 1000) then
+				leave myWhile;
+            end if;
+            
+			set i = i + 1;
+		end while;
+    
+    select '1부터 100까지의 합 (4의 배수 제외, 총합 1000 이상 시 종료): ', sum;
+end $$
+delimiter ;
 
+call whileProc2();
 
 
 
