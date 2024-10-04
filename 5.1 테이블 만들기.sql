@@ -48,6 +48,7 @@ create database internet_market;
 
 use internet_market;
 
+-- 고객 정보 customers 테이블
 drop table if exists customers;
 create table customers(
 	customer_id 	int auto_increment primary key,
@@ -67,6 +68,7 @@ values ('Alpha', 'Alpha@example.com', '010-1111-2222', '서울시 강남구'),
 
 select * from customers;
 
+-- 물품 정보 products 테이블
 drop table if exists products;
 create table products(
 	product_id		int auto_increment primary key,
@@ -86,6 +88,7 @@ values ('스마트폰', '최신형 스마트폰, 128GB', 799000.00, 50),
     
 select * from products;
 
+-- 주문 정보 orders 테이블
 drop table if exists orders;
 create table orders(
 	order_id 		int auto_increment primary key,
@@ -105,6 +108,7 @@ values (1, '2024-10-01 10:30:42', 'shipped'),
 
 select * from orders;
 
+-- 주문 품목 정보 order_items 테이블
 drop table if exists order_items;
 create table order_items(
 	order_item_id	int auto_increment primary key,
