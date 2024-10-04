@@ -267,13 +267,14 @@ create procedure whileProc2()
 begin
 	declare i int;
     declare sum int;
-    set i = 1;
+    set i = 0;
     set sum = 0;
     
     myWhile : 			-- myWhile 이름의 레이블 지정
 		while (i <= 100) do
+			set i = i + 1;
+            
 			if (i % 4 = 0) then
-				set i = i + 1;
                 iterate myWhile;
             end if;
             
@@ -281,12 +282,10 @@ begin
             
             if (sum > 1000) then
 				leave myWhile;
-            end if;
-            
-			set i = i + 1;
+            end if;            
 		end while;
     
-    select '1부터 100까지의 합 (4의 배수 제외, 총합 1000 이상 시 종료): ', sum;
+    select sum as '1부터 100까지의 합 (4의 배수 제외, 총합 1000 이상 시 종료): ';
 end $$
 delimiter ;
 
